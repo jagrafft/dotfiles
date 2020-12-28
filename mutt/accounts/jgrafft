@@ -1,0 +1,21 @@
+set record = "+jgrafft-per/Sent Mail"
+set spoolfile = "+jgrafft-per/[Gmail].All Mail"
+
+set realname = "jason a. grafft"
+set from = "jgrafft@gmail.com"
+set use_from = yes
+set sendmail = "/usr/bin/msmtp -a jgrafft"
+set mbox = "+jgrafft-per/archive"
+set postponed = "+jgrafft-per/drafts"
+
+set signature = "~/.mutt/signatures/jgrafft"
+
+color status green default
+
+macro index D \
+      "<save-message>+jgrafft-per/Trash<enter>" \
+      "move message to Trash"
+
+macro index J \
+      "<save-message>+jgrafft-per/Spam<enter>" \
+      "mark message as Junk"
