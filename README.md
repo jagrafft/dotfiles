@@ -4,7 +4,10 @@
 - `emacs`
 - i3
   - `xinit`
-- `offlineimap`
+- `mutt`
+  - `mailcap`
+  - `msmtp`
+  - `offlineimap`
 - `rxvt`
 - `vim`
 
