@@ -1,0 +1,38 @@
+[general]
+accounts = account001, account002
+pythonfile = ~/.offlineimap.py
+ui = ttyui
+
+[Account account001]
+localrepository = account001-local
+remoterepository = account001-remote
+
+[Repository account001-local]
+type = Maildir
+localfolders = ~/mail/account001user-account001
+nametrans = lambda folder: {'archive': '[Gmail]/All Mail'}.get(folder, folder)
+
+[Repository account001-remote]
+type = Gmail
+sslcacertfile = /etc/ssl/certs/ca-certificates.crt
+remoteuser = account001user@host001.com
+remotepasseval = subprocess.check_output(['pass', 'show', 'path/to/account001']).strip()
+nametrans = lambda folder: {'archive': '[Gmail]/All Mail'}.get(folder, folder)
+folderfilter = lambda folder: folder == '[Gmail]/All Mail'
+
+[Account account002]
+localrepository = account002-local
+remoterepository = account002-remote
+
+[Repository account002-local]
+type = Maildir
+localfolders = ~/mail/account002user-account002
+nametrans = lambda folder: {'archive': '[Gmail]/All Mail'}.get(folder, folder)
+
+[Repository account002-remote]
+type = Gmail
+sslcacertfile = /etc/ssl/certs/ca-certificates.crt
+remoteuser = account002user@host002.com
+remotepasseval = subprocess.check_output(['pass', 'show', 'path/to/account002']).strip()
+nametrans = lambda folder: {'archive': '[Gmail]/All Mail'}.get(folder, folder)
+folderfilter = lambda folder: folder == '[Gmail]/All Mail'
