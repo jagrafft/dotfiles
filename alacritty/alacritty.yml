@@ -1,0 +1,13 @@
+font:
+  size: 7
+  normal:
+    famliy: Liberation Mono
+    style: Regular
+  bold:
+    famliy: Liberation Mono
+    style: Bold
+  italic:
+    famliy: Liberation Mono
+    style: Italic
+import:
+  - ~/.config/alacritty/alacritty-master/dracula.yml
