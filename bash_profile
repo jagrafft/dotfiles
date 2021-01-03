@@ -8,7 +8,7 @@ fi
 # User specific environment and startup programs
 
 PATH=$PATH:$HOME/bin
-TERMINAL=/usr/local/bin/alacritty
+export TERMINAL=/usr/local/bin/alacritty
 
 # Dracula Theme Colors
 export PS1="\[\033[36m\]\u\[\033[m\]@\[\033[32m\]\h:\[\033[33;1m\]\w\[\033[m\]\$ "
