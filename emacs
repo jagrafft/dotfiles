@@ -35,6 +35,12 @@ There are two things you can do about this warning:
 ;;   company-stan
 ;;   flycheck-stan))
 
+;; auctex
+(unless (package-installed-p 'auctex)
+  (package-refresh-contents)
+  (package-install 'auctex))
+(require 'tex-site)
+
 ;; deadgrep
 (unless (package-installed-p 'deadgrep)
   (package-refresh-contents)
@@ -129,11 +135,6 @@ There are two things you can do about this warning:
     (which-key-mode 1)
     )
   )
-
-;; Wordcount Mode
-(add-to-list 'load-path "~/.emacs.d/wc-mode/")
-(require 'wc-mode)
-(global-set-key "\C-cw" 'wc-mode)
 
 ;; load evil
 (use-package evil
