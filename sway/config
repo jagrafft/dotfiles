@@ -31,11 +31,9 @@ exec --no-startup-id xss-lock --transfer-sleep-lock -- swaylock --nofork
 exec --no-startup-id nm-applet
 
 # Use pactl to adjust volume in PulseAudio.
-set $refresh_swaystatus killall -SIGUSR1 waybar
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5% && $refresh_swaystatus
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5% && $refresh_swaystatus
-bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_swaystatus
-bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_swaystatus
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume $(pacmd list-sinks |awk '/* index:/{print $3}') +5% # Raise
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume $(pacmd list-sinks |awk '/* index:/{print $3}') -5% # Lower
+bindsym XF86AudioMute exec pactl set-sink-mute  $(pacmd list-sinks |awk '/* index:/{print $3}') toggle # Mute
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -47,7 +45,7 @@ bindsym $mod+Return exec alacritty
 bindsym $mod+Shift+q kill
 
 # wofi
-bindsym $mod+d exec --no-startup-id wofi -S drun
+bindsym $mod+d exec --no-startup-id wofi -S run
 
 # change focus
 bindsym $mod+h focus left
@@ -142,7 +140,7 @@ bindsym $mod+Shift+c reload
 bindsym $mod+Shift+r restart
 
 # exit Sway (logs you out of your X session)
-bindsym $mod+Shift+e exec "waybar -t warning -m 'Exit session?' -B 'EXIT' 'swaymsg exit'"
+bindsym $mod+Shift+e exec "swaynag -t warning -m 'Exit session?' -B 'EXIT' 'swaymsg exit'"
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
@@ -164,10 +162,10 @@ mode "resize" {
 
 bindsym $mod+p mode "resize"
 
-# Start waybar to display a workspace bar (plus the system information swaystatus
-# finds out, if available)
+# waybar
 bar {
-        status_command i3status
+        swaybar_command waybar
+        workspace_buttons ys
 
         colors {
                background #282A36
@@ -182,3 +180,5 @@ bar {
         }
         tray_output primary
 }
+
+include @sysconfdir@/sway/config.d/*
