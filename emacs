@@ -62,7 +62,7 @@ There are two things you can do about this warning:
 ;; J Mode
 (add-to-list 'load-path "~/.emacs.d/j-mode/")
 (autoload 'j-mode "j-mode.el" "Major mode for editing J files" t)
-(add-to-list 'auto-mode-alist '("\\.ij(kbd "<rstp>")$" . j-mode))
+(add-to-list 'auto-mode-alist '("\\.ij[rstp]$" . j-mode))
 
 ;; Julia Mode
 (unless (package-installed-p 'julia-mode)
