@@ -113,6 +113,12 @@ There are two things you can do about this warning:
   (package-install 'stan-mode))
 (require 'stan-mode)
 
+;; Svelte Mode
+(unless (package-installed-p 'svelte-mode)
+  (package-refresh-contents)
+  (package-install 'svelte-mode))
+(require 'svelte-mode)
+
 ;; vlang-mode
 (add-to-list 'load-path "~/.emacs.d/vlang-mode/")
 (require 'vlang-mode)
