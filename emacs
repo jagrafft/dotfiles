@@ -48,11 +48,6 @@ There are two things you can do about this warning:
 (require 'deadgrep)
 (global-set-key (kbd "<f5>") 'deadgrep)
 
-;; Delve Mode
-(add-to-list 'load-path "~/.emacs.d/delve-mode/")
-(require 'delve-mode)
-(add-to-list 'auto-mode-alist '("\\.delve" . delve-mode))
-
 ;; Dracula Theme
 (unless (package-installed-p 'dracula-theme)
   (package-refresh-contents)
@@ -98,6 +93,12 @@ There are two things you can do about this warning:
 (require 'neotree)
 (global-set-key (kbd "<f8>") 'neotree-toggle)
 (global-set-key (kbd "C-c n") 'neotree-toggle)
+
+;; Rel Mode
+(add-to-list 'load-path "~/.emacs.d/rel-mode/")
+(require 'rel-mode)
+(add-to-list 'auto-mode-alist '("\\.delve" . rel-mode))
+(add-to-list 'auto-mode-alist '("\\.rel" . rel-mode))
 
 ;; Rust Mode
 (unless (package-installed-p 'rust-mode)
