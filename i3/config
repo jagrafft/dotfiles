@@ -107,6 +107,10 @@ bindsym $mod+space focus mode_toggle
 # focus the child container
 #bindsym $mod+Down focus child
 
+# monitor names
+set $main eDP1
+set $secondary HDMI-1-0
+
 # workspace names
 set $ws1 "1"
 set $ws2 "2"
@@ -118,6 +122,21 @@ set $ws7 "7"
 set $ws8 "8"
 set $ws9 "9"
 set $ws10 "10"
+
+# workspace outputs
+workspace $ws1 output $main
+workspace $ws2 output $main
+workspace $ws3 output $main
+workspace $ws4 output $main
+workspace $ws5 output $main
+workspace $ws6 output $secondary
+workspace $ws7 output $secondary
+workspace $ws8 output $secondary
+workspace $ws9 output $secondary
+workspace $ws0 output $secondary
+
+# enable $secondary display out
+bindsym $mod+Shift+u exec "xrandr --auto --output HDMI-1-0 --mode 1920x1080 --left-of eDP-1"
 
 # switch to workspace
 bindsym $mod+1 workspace number $ws1
