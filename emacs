@@ -59,6 +59,12 @@ There are two things you can do about this warning:
 (autoload 'j-mode "j-mode.el" "Major mode for editing J files" t)
 (add-to-list 'auto-mode-alist '("\\.ij[rstp]$" . j-mode))
 
+;; GraphQL Mode
+(unless (package-installed-p 'graphql-mode)
+  (package-refresh-contents)
+  (package-install 'graphql-mode))
+(require 'graphql-mode)
+
 ;; Julia Mode
 (unless (package-installed-p 'julia-mode)
   (package-refresh-contents)
@@ -142,6 +148,12 @@ There are two things you can do about this warning:
     (which-key-mode 1)
     )
   )
+
+;; Yaml Mode
+(unless (package-installed-p 'yaml-mode)
+  (package-refresh-contents)
+  (package-install 'yaml-mode))
+(require 'yaml-mode)
 
 ;; load evil
 (use-package evil
