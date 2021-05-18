@@ -18,6 +18,7 @@ There are two things you can do about this warning:
 (global-display-line-numbers-mode)
 (setq-default indent-tabs-mode nil)
 (show-paren-mode 1)
+(windmove-default-keybindings)
 
 ;; bootstrap use-package
 (unless (package-installed-p 'use-package)
