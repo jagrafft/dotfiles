@@ -44,11 +44,14 @@ bindsym $mod+Return exec alacritty
 # kill focused window
 bindsym $mod+Shift+q kill
 
-# screenshot
-bindsym Print --release exec "slurp | grim -g -"
+# screenshot window
+bindsym Print exec grim -t png $HOME/documents/screenshots/$(date +%Y-%m-%dT%H%M%S).png
 
-# wofi
-bindsym $mod+d exec --no-startup-id wofi -S run
+# screenshot region
+bindsym $mod+Print exec grim -t png -g "$(slurp)" $HOME/documents/screenshots/$(date +%Y-%m-%dT%H%M%S).png
+
+# wldash
+bindsym $mod+d exec --no-startup-id wldash
 
 # change focus
 bindsym $mod+h focus left
