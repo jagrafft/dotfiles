@@ -18,7 +18,6 @@ There are two things you can do about this warning:
 (global-display-line-numbers-mode)
 (setq-default indent-tabs-mode nil)
 (show-paren-mode 1)
-(windmove-default-keybindings)
 
 ;; bootstrap use-package
 (unless (package-installed-p 'use-package)
@@ -35,6 +34,15 @@ There are two things you can do about this warning:
 ;; '(stan-mode
 ;;   company-stan
 ;;   flycheck-stan))
+
+;; use 'Shift+arrow_keys to change windows
+(progn
+  (require 'windmove)
+  ;; use Shift+arrow_keys to move cursor around split panes
+  (windmove-default-keybindings)
+  ;; when cursor is on edge, move to the other side, as in a torus space
+  (setq windmove-wrap-around t )
+)
 
 ;; auctex
 (unless (package-installed-p 'auctex)
@@ -87,12 +95,6 @@ There are two things you can do about this warning:
   :init (setq markdown-command "pandoc --from=markdown --to=html5"))
 (setq markdown-enable-math t)
 
-;; Monokai Theme
-;;(unless (package-installed-p 'monokai-theme)
-;;  (package-refresh-contents)
-;;  (package-install 'monokai-theme))
-;;(load-theme 'monokai t)
-
 ;; NeoTree
 (unless (package-installed-p 'neotree)
   (package-refresh-contents)
@@ -113,7 +115,13 @@ There are two things you can do about this warning:
   (package-install 'rust-mode))
 (autoload 'rust-mode "rust-mode" nil t)
 (add-hook 'rust-mode-hook
-          (lambda () (setq indent-tabs-mode nil)))
+  (lambda () (setq indent-tabs-mode nil)))
+
+;; Solidity Mode
+(unless (package-installed-p 'solidity-mode)
+  (package-refresh-contents)
+  (package-install 'solidity-mode))
+(require 'solidity-mode)
 
 ;; Stan Mode
 (unless (package-installed-p 'stan-mode)
@@ -126,11 +134,6 @@ There are two things you can do about this warning:
   (package-refresh-contents)
   (package-install 'svelte-mode))
 (require 'svelte-mode)
-
-;; vlang-mode
-(add-to-list 'load-path "~/.emacs.d/vlang-mode/")
-(require 'vlang-mode)
-(add-to-list 'auto-mode-alist '("\\.v" . vlang-mode))
 
 ;; which-key
 (use-package which-key
