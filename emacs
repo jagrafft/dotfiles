@@ -127,10 +127,11 @@ There are two things you can do about this warning:
   (package-install 'svelte-mode))
 (require 'svelte-mode)
 
-;; vlang-mode
-(add-to-list 'load-path "~/.emacs.d/vlang-mode/")
-(require 'vlang-mode)
-(add-to-list 'auto-mode-alist '("\\.v" . vlang-mode))
+;; Typescript Mode
+(unless (package-installed-p 'typescript-mode)
+  (package-refresh-contents)
+  (package-install 'typescript-mode))
+(require 'typescript-mode)
 
 ;; which-key
 (use-package which-key
