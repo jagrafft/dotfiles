@@ -151,6 +151,12 @@ There are two things you can do about this warning:
     )
   )
 
+;; Typescript Mode
+(unless (package-installed-p 'typescript-mode)
+  (package-refresh-contents)
+  (package-install 'typescript-mode))
+(require 'typescript-mode)
+
 ;; Yaml Mode
 (unless (package-installed-p 'yaml-mode)
   (package-refresh-contents)
