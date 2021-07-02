@@ -55,6 +55,12 @@ There are two things you can do about this warning:
   (package-install 'dracula-theme))
 (load-theme 'dracula t)
 
+;; haskell mode
+(unless (package-installed-p 'haskell-mode)
+  (package-refresh-contents)
+  (package-install 'haskell-mode))
+(require 'haskell-mode)
+
 ;; J Mode
 (add-to-list 'load-path "~/.emacs.d/j-mode/")
 (autoload 'j-mode "j-mode.el" "Major mode for editing J files" t)
@@ -87,12 +93,6 @@ There are two things you can do about this warning:
   :init (setq markdown-command "pandoc --from=markdown --to=html5"))
 (setq markdown-enable-math t)
 
-;; Monokai Theme
-;;(unless (package-installed-p 'monokai-theme)
-;;  (package-refresh-contents)
-;;  (package-install 'monokai-theme))
-;;(load-theme 'monokai t)
-
 ;; NeoTree
 (unless (package-installed-p 'neotree)
   (package-refresh-contents)
@@ -114,6 +114,12 @@ There are two things you can do about this warning:
 (autoload 'rust-mode "rust-mode" nil t)
 (add-hook 'rust-mode-hook
           (lambda () (setq indent-tabs-mode nil)))
+
+;; Solidity Mode
+(unless (package-installed-p 'solidity-mode)
+  (package-refresh-contents)
+  (package-install 'solidity-mode))
+(require 'solidity-mode)
 
 ;; Stan Mode
 (unless (package-installed-p 'stan-mode)
@@ -150,12 +156,6 @@ There are two things you can do about this warning:
     (which-key-mode 1)
     )
   )
-
-;; Typescript Mode
-(unless (package-installed-p 'typescript-mode)
-  (package-refresh-contents)
-  (package-install 'typescript-mode))
-(require 'typescript-mode)
 
 ;; Yaml Mode
 (unless (package-installed-p 'yaml-mode)
