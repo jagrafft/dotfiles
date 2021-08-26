@@ -15,9 +15,12 @@ There are two things you can do about this warning:
   )
 (package-initialize)
 
+(setq inhibit-splash-screen t)
+
 (global-display-line-numbers-mode)
 (setq-default indent-tabs-mode nil)
 (show-paren-mode 1)
+(windmove-default-keybindings)
 
 ;; bootstrap use-package
 (unless (package-installed-p 'use-package)
@@ -34,15 +37,6 @@ There are two things you can do about this warning:
 ;; '(stan-mode
 ;;   company-stan
 ;;   flycheck-stan))
-
-;; use 'Shift+arrow_keys to change windows
-(progn
-  (require 'windmove)
-  ;; use Shift+arrow_keys to move cursor around split panes
-  (windmove-default-keybindings)
-  ;; when cursor is on edge, move to the other side, as in a torus space
-  (setq windmove-wrap-around t )
-)
 
 ;; auctex
 (unless (package-installed-p 'auctex)
@@ -63,16 +57,16 @@ There are two things you can do about this warning:
   (package-install 'dracula-theme))
 (load-theme 'dracula t)
 
+;; haskell mode
+(unless (package-installed-p 'haskell-mode)
+  (package-refresh-contents)
+  (package-install 'haskell-mode))
+(require 'haskell-mode)
+
 ;; J Mode
 (add-to-list 'load-path "~/.emacs.d/j-mode/")
 (autoload 'j-mode "j-mode.el" "Major mode for editing J files" t)
 (add-to-list 'auto-mode-alist '("\\.ij[rstp]$" . j-mode))
-
-;; GraphQL Mode
-(unless (package-installed-p 'graphql-mode)
-  (package-refresh-contents)
-  (package-install 'graphql-mode))
-(require 'graphql-mode)
 
 ;; Julia Mode
 (unless (package-installed-p 'julia-mode)
@@ -115,7 +109,16 @@ There are two things you can do about this warning:
   (package-install 'rust-mode))
 (autoload 'rust-mode "rust-mode" nil t)
 (add-hook 'rust-mode-hook
-  (lambda () (setq indent-tabs-mode nil)))
+          (lambda () (setq indent-tabs-mode nil)))
+
+;; Scala Mode
+(unless (package-installed-p 'scala-mode)
+  (package-refresh-contents)
+  (package-install 'scala-mode))
+(require 'scala-mode)
+
+(use-package scala-mode
+  :interpreter ("scala" . scala-mode))
 
 ;; Solidity Mode
 (unless (package-installed-p 'solidity-mode)
@@ -134,6 +137,12 @@ There are two things you can do about this warning:
   (package-refresh-contents)
   (package-install 'svelte-mode))
 (require 'svelte-mode)
+
+;; Typescript Mode
+(unless (package-installed-p 'typescript-mode)
+  (package-refresh-contents)
+  (package-install 'typescript-mode))
+(require 'typescript-mode)
 
 ;; which-key
 (use-package which-key
@@ -180,7 +189,11 @@ There are two things you can do about this warning:
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(package-selected-packages (quote (use-package))))
+ '(global-display-line-numbers-mode t)
+ '(package-selected-packages '(use-package))
+ '(show-paren-mode t)
+ '(tool-bar-mode nil)
+ '(tooltip-mode nil))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
