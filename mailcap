@@ -1,1 +1,0 @@
-text/html; lynx -dump -force_html %s; copiousoutput; needsterminal;
