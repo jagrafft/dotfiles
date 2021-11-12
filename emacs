@@ -68,6 +68,13 @@ There are two things you can do about this warning:
 (autoload 'j-mode "j-mode.el" "Major mode for editing J files" t)
 (add-to-list 'auto-mode-alist '("\\.ij[rstp]$" . j-mode))
 
+;; js2 Mode
+(unless (package-installed-p 'js2-mode)
+  (package-refresh-contents)
+  (package-install 'js2-mode))
+(require 'js2-mode)
+(add-to-list 'auto-mode-alist '("\\.mjs" . js2-mode))
+
 ;; Julia Mode
 (unless (package-installed-p 'julia-mode)
   (package-refresh-contents)
@@ -86,7 +93,7 @@ There are two things you can do about this warning:
          ("\\.md\\'" . markdown-mode)
          ("\\.markdown\\'" . markdown-mode))
   ;;:init (setq markdown-command "multimarkdown"))
-  :init (setq markdown-command "pandoc --from=markdown --to=html5"))
+  :init (setq markdown-command "/usr/local/bin/pandoc --from=markdown --to=html5"))
 (setq markdown-enable-math t)
 
 ;; NeoTree
