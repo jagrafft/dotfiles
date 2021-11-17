@@ -38,6 +38,9 @@ There are two things you can do about this warning:
 ;;   company-stan
 ;;   flycheck-stan))
 
+;; set line number color to white
+(set-face-foreground 'line-number "white")
+
 ;; auctex
 (unless (package-installed-p 'auctex)
   (package-refresh-contents)
