@@ -107,6 +107,17 @@ There are two things you can do about this warning:
 (global-set-key (kbd "<f8>") 'neotree-toggle)
 (global-set-key (kbd "C-c n") 'neotree-toggle)
 
+;; Python Black
+(unless (package-installed-p 'python-black)
+  (package-refresh-contents)
+  (package-install 'python-black))
+(require 'python-black)
+
+(use-package python-black
+  :demand t
+  :after python
+  :hook (python-mode . python-black-on-save-mode))
+
 ;; Rel Mode
 (add-to-list 'load-path "~/.emacs.d/rel-mode/")
 (require 'rel-mode)
