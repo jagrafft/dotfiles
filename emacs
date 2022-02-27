@@ -60,6 +60,11 @@ There are two things you can do about this warning:
   (package-install 'dracula-theme))
 (load-theme 'dracula t)
 
+;; Flix Mode
+(add-to-list 'load-path "~/.emacs.d/flix-mode/")
+(require 'flix-mode)
+(add-to-list 'auto-mode-alist '("\\.flix" . flix-mode))
+
 ;; haskell mode
 (unless (package-installed-p 'haskell-mode)
   (package-refresh-contents)
@@ -121,7 +126,6 @@ There are two things you can do about this warning:
 ;; Rel Mode
 (add-to-list 'load-path "~/.emacs.d/rel-mode/")
 (require 'rel-mode)
-(add-to-list 'auto-mode-alist '("\\.delve" . rel-mode))
 (add-to-list 'auto-mode-alist '("\\.rel" . rel-mode))
 
 ;; Rust Mode
