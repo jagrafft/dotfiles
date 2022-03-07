@@ -60,6 +60,13 @@ There are two things you can do about this warning:
   (package-install 'dracula-theme))
 (load-theme 'dracula t)
 
+;; dvc.lock and .dvc
+(use-package! yaml-mode
+  :config
+  (add-to-list 'auto-mode-alist '("\\.dvc" . yaml-mode))
+  (add-to-list 'auto-mode-alist '("dvc.lock" . yaml-mode))
+)
+
 ;; Flix Mode
 (add-to-list 'load-path "~/.emacs.d/flix-mode/")
 (require 'flix-mode)
