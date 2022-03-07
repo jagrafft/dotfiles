@@ -61,7 +61,7 @@ There are two things you can do about this warning:
 (load-theme 'dracula t)
 
 ;; dvc.lock and .dvc
-(use-package! yaml-mode
+(use-package yaml-mode
   :config
   (add-to-list 'auto-mode-alist '("\\.dvc" . yaml-mode))
   (add-to-list 'auto-mode-alist '("dvc.lock" . yaml-mode))
