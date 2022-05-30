@@ -1,14 +1,6 @@
-# Default config for sway
-#
-# Copy this to ~/.config/sway/config and edit it to your liking.
-#
-# Read `man 5 sway` for a complete reference.
-
 # global variables
 include /etc/sway/definitions
 
-# add your customizations here
-# e.g.:
 # * change modifier key from Alt to Win/Pine-Key:
 set $mod Mod4
 
@@ -24,16 +16,16 @@ set $background /home/jg/documents/monochrome_november_by_pajunen_dan3d2v.jpg
 bindsym Print exec grim -g "$(slurp)" - | wl-copy
 
 # screenshot region to file
-bindsym $mod+Print exec grim -t png -g "$(slurp)" $HOME/documents/screenshots/$(date +%Y-%m-%dT%H%M%S).png
+bindsym $mod+Print exec grim -t png -g "$(slurp)" $HOME/$GRIM_OUTPUT_DIR/$(date +%Y-%m-%dT%H%M%S).png
 
 # screenshot window to file
-bindsym $mod+Shift+Print exec grim -t png $HOME/documents/screenshots/$(date +%Y-%m-%dT%H%M%S).png
+bindsym $mod+Shift+Print exec grim -t png $HOME/$GRIM_OUTPUT_DIR/$(date +%Y-%m-%dT%H%M%S).png
 
 # capture region of screen to video
-bindsym $mod+Ctrl+Print exec wf-recorder -g "$(slurp)" -f $HOME/documents/screenshots/$(date +%Y-%m-%dT%H%M%S).mp4
+bindsym $mod+Ctrl+Print exec wf-recorder -g "$(slurp)" -f $HOME/$GRIM_OUTPUT_DIR/$(date +%Y-%m-%dT%H%M%S).mp4
 
 # capture screen to video
-bindsym $mod+Ctrl+Shift+Print exec wf-recorder -f $HOME/documents/screenshots/$(date +%Y-%m-%dT%H%M%S).mp4
+bindsym $mod+Ctrl+Shift+Print exec wf-recorder -f $HOME/$GRIM_OUTPUT_DIR/$(date +%Y-%m-%dT%H%M%S).mp4
 
 # stop screen capture
 bindsym $mod+Ctrl+Shift+K exec pgrep wf-recorder | xargs kill -s SIGINT
