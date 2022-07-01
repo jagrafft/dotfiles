@@ -1,13 +1,19 @@
+bell:
+  duration: 0
+cursor:
+  style: Underline
+  unfocused_hollow: true
 font:
-  size: 10.5
+  size: 12.5
   normal:
-    famliy: Liberation Mono
-    style: Regular
+    famliy: Iosevka
+    style: Upright
   bold:
-    famliy: Liberation Mono
+    famliy: Iosevka
     style: Bold
   italic:
-    famliy: Liberation Mono
-    style: Italic
+    famliy: Iosevka
+    style: Oblique
+live_config_reload: true
 import:
   - ~/.config/alacritty/alacritty-master/dracula.yml

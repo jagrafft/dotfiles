@@ -15,5 +15,3 @@ export LSCOLORS=ExFxBxDxCxegedabagacad
 # PATH="$HOME/.local/bin:$PATH"
 export TERMINAL=/usr/local/bin/alacritty
 export GRIM_OUTPUT_DIR=$HOME/documents/screenshots
-
-alias ls='ls -GFh'
