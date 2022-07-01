@@ -6,13 +6,13 @@ cursor:
 font:
   size: 12.5
   normal:
-    famliy: Iosevka
+    family: Iosevka
     style: Upright
   bold:
-    famliy: Iosevka
+    family: Iosevka
     style: Bold
   italic:
-    famliy: Iosevka
+    family: Iosevka
     style: Oblique
 live_config_reload: true
 import:
