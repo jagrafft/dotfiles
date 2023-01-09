@@ -47,11 +47,6 @@ There are two things you can do about this warning:
   (package-install 'auctex))
 (require 'tex-site)
 
-;; bqn Mode
-(add-to-list 'load-path "~/.emacs.d/bqn-mode/")
-(require 'bqn-mode)
-(add-to-list 'auto-mode-alist '("\\.bqn" . bqn-mode))
-
 ;; deadgrep
 (unless (package-installed-p 'deadgrep)
   (package-refresh-contents)
