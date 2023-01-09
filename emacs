@@ -47,6 +47,11 @@ There are two things you can do about this warning:
   (package-install 'auctex))
 (require 'tex-site)
 
+;; bqn Mode
+(add-to-list 'load-path "~/.emacs.d/bqn-mode/")
+(require 'bqn-mode)
+(add-to-list 'auto-mode-alist '("\\.bqn" . bqn-mode))
+
 ;; deadgrep
 (unless (package-installed-p 'deadgrep)
   (package-refresh-contents)
@@ -59,18 +64,6 @@ There are two things you can do about this warning:
   (package-refresh-contents)
   (package-install 'dracula-theme))
 (load-theme 'dracula t)
-
-;; dvc.lock and .dvc
-(use-package yaml-mode
-  :config
-  (add-to-list 'auto-mode-alist '("\\.dvc" . yaml-mode))
-  (add-to-list 'auto-mode-alist '("dvc.lock" . yaml-mode))
-)
-
-;; Flix Mode
-(add-to-list 'load-path "~/.emacs.d/flix-mode/")
-(require 'flix-mode)
-(add-to-list 'auto-mode-alist '("\\.flix" . flix-mode))
 
 ;; haskell mode
 (unless (package-installed-p 'haskell-mode)
@@ -95,6 +88,12 @@ There are two things you can do about this warning:
   (package-refresh-contents)
   (package-install 'julia-mode))
 (require 'julia-mode)
+
+;; Julia Formatter
+(load-file "~/.emacs.d/julia-formatter/julia-formatter.el")
+(require 'julia-formatter)
+(add-hook 'julia-mode-hook 'julia-formatter-mode)
+(add-hook 'after-init-hook 'julia-formatter--ensure-server)
 
 ;; Markdown Mode
 (unless (package-installed-p 'markdown-mode)
@@ -152,12 +151,6 @@ There are two things you can do about this warning:
 (use-package scala-mode
   :interpreter ("scala" . scala-mode))
 
-;; Solidity Mode
-(unless (package-installed-p 'solidity-mode)
-  (package-refresh-contents)
-  (package-install 'solidity-mode))
-(require 'solidity-mode)
-
 ;; Stan Mode
 (unless (package-installed-p 'stan-mode)
   (package-refresh-contents)
@@ -175,6 +168,7 @@ There are two things you can do about this warning:
   (package-refresh-contents)
   (package-install 'typescript-mode))
 (require 'typescript-mode)
+(add-to-list 'auto-mode-alist '("\\.tsx" . typescript-mode))
 
 ;; which-key
 (use-package which-key
