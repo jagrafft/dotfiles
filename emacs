@@ -88,7 +88,7 @@ There are two things you can do about this warning:
 (load-file "~/.emacs.d/julia-formatter/julia-formatter.el")
 (require 'julia-formatter)
 (add-hook 'julia-mode-hook 'julia-formatter-mode)
-(add-hook 'after-init-hook 'julia-formatter--ensure-server)
+(add-hook 'julia-mode-hook '(lambda() (julia-formatter-server-start)))
 
 ;; Markdown Mode
 (unless (package-installed-p 'markdown-mode)
